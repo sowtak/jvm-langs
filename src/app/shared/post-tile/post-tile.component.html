@@ -1,0 +1,29 @@
+<!-- Display Posts-->
+<div class="row post" *ngFor="let post of posts">
+  <app-like-button [post]="post"></app-like-button>
+  <!-- Section to Display Post Information-->
+  <div class="col-md-11">
+    <span class="mansion-forum-info">
+      <span class="mansion-forum-text"><a class="posturl" routerLink="">{{post.title}}</a></span>
+      <span> .<a class="username" routerLink="/user/{{post.username}}">{{post.username}}  によって投稿されました </a></span>
+      <span> . {{post.duration}}</span>
+    </span>
+    <hr />
+    <div class="post-title">
+      <a class="post-title" href="{{post.url}}">{{post.title}}</a>
+    </div>
+    <div>
+      <p class="post-text" [innerHtml]="post.content"></p>
+    </div>
+    <hr />
+    <span>
+      <a class="btnCommments" role="button">
+        <fa-icon [icon]="faComments"></fa-icon>
+        Comments({{post.commentCount}})
+      </a>
+      <button class="login" (click)="goToPost(post.id)">
+        Read Post
+      </button>
+    </span>
+  </div>
+</div>

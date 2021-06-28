@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <hr />
+      <div class="col-md-9">
+        <h2>物件のフォーラム一覧</h2>
+        <ul>
+          <li *ngFor="let mansionForum of mansionForums">
+              <a routerLink="/view-mansion-forum/{{mansionForum.id}}">{{mansionForum.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>

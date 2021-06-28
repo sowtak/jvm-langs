@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <hr />
+    <div class="col-md-9">
+      <div class="row post">
+        <div class="col-md-1">
+          <app-like-button [post]="post"></app-like-button>
+        </div>
+        <div class="col-md-11">
+          <span>
+            <span class="mansion-forum-text"><a class="post-url" href="">{{post.mansionForumName}}</a></span>
+            <span> . Posted
+              <span> {{post.duration}} </span>
+              by
+              <a class="username" href="">{{post.username}}</a>
+            </span>
+          </span>
+          <hr />
+          <a routerLink="post.url" class="post-title">{{post.title}}</a>
+          <div>
+            <p class="post-text" [innerHtml]="post.content"></p>
+          </div>
+          <div class="post-comment">
+            <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+              <div class="form-group">
+                <textarea class="form-control" [formControlName]="'text'" placeholder="口コミに対するコメント"></textarea>
+              </div>
+              <button type="submit" class="login float-right">Comment</button>
+            </form>
+          </div>
+          <div style="margin-top: 60px;" *ngFor="let comment of comments">
+            <div class="comment">
+              <div class="username">
+                <a routerLink="/user/comment.username">{{comment.username}}</a>
+              </div>
+              <div>
+                <p>{{comment.duration}}</p>
+              </div>
+              <b>{{comment.text}}</b>
+            </div>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-sidebar></app-sidebar>
+      <app-mansion-forum-sidebar></app-mansion-forum-sidebar>
+    </div>
+  </div>
+</div>

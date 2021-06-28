@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+      <div class="create-mansion-forum-container">
+        <form class="post-form" [formGroup]="createMansionForumForm" (ngSubmit)="createMansionForum()">
+          <div class="form-group">
+            <div class="create-mansion-forum-heading">物件のフォーラムを作成</div>
+            <hr />
+            <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px"
+              placeholder="物件名">
+            <textarea type="name" [formControlName]="'address'" style="width: 100%; margin-top: 5px"
+              placeholder="住所"></textarea>
+            <div>
+              <div style="margin-top: 5px" class="float-right">
+                <button (click)="discard()" class="btnDiscard">破棄</button>
+                <button class="btnCreateMansionForum">作成</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <div class="sidebar">
+          <h5 class="guidelines">口コミ投稿にあたって</h5>
+          <hr />
+          <ul>
+            <li>個人の特定につながる内容は含めないでください</li>
+            <hr />
+            <li>誹謗中傷となる内容は書かないでください</li>
+            <hr />
+            <li> </li>
+            <hr />
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

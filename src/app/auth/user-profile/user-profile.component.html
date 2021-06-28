@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    ようこそ <b>{{name}}</b>さん.<br />  あなたは <b>{{postLength}}</b> 回 口コミを投稿し、
+    <b>{{commentLength}}</b> 回コメントしました
+    口コミやコメントの履歴を見ることができます
+  </div>
+  <hr />
+  <div>
+    投稿した口コミ
+  </div>
+  <app-post-tile [posts]="posts"></app-post-tile>
+  <hr />
+  <div>
+    投稿したコメント:
+  </div>
+  <div *ngFor="let comment of comments">
+    <div class="comment">
+      <div class="username">
+        <a routerLink="/user/comment.username">{{comment.username}}</a>
+      </div>
+      <div>
+        <p>{{comment.duration}}</p>
+      </div>
+      <b>{{comment.text}}</b>
+    </div>
+    <hr />
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <hr />
+      <div class="create-post-container col-md-9">
+        <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
+          <div class="form-group">
+            <div class="create-post-heading">口コミを作成する</div>
+            <hr />
+            <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px"
+              placeholder="タイトル">
+
+            <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL">
+
+            <select class="form-control" style="margin-top: 10px" [formControlName]="'mansionForumName'">
+              <option value="" selected disabled>物件のフォーラムを選択</option>
+              <option *ngFor="let mansionForum of mansionForums">{{mansionForum.name}}</option>
+            </select>
+
+            <editor [formControlName]="'content'"></editor>
+              <div style="margin-top: 5px" class="float-right">
+                <button (click)="discardPost()" class="btnDiscard">破棄</button>
+                <button class="btnCreatePost">投稿</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

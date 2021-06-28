@@ -1,0 +1,11 @@
+<div class="sidebar-view-mansion-forum">
+    <div style="color: black; font-weight: bold">フォーラムの一覧を見る</div>
+    <hr />
+    <span *ngFor="let mansionForum of mansionForums">
+        <span class="mansion-forum-text"><a href="/view-mansion-forum/{{mansionForum.id}}">{{mansionForum.name}}</a></span>
+        <hr />
+    </span>
+    <div style="text-align: center" *ngIf="displayViewAll">
+        <a style="font-weight: bold" routerLink="/list-mansion-forums">すべて見る</a>
+    </div>
+</div>

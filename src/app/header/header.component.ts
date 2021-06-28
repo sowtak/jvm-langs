@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../auth/shared/auth.service';
+import { AuthenticationService } from '../auth/shared/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   faUser = faUser;
-  isLoggedIn: boolean;
-  username: string;
+  isLoggedIn: boolean | undefined;
+  username: string | undefined;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
-    this.authService.username.subscribe((data: string) => this.username = data);
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.username = this.authService.getUserName();
+    this.authenticationService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
+    this.authenticationService.username.subscribe((data: string) => this.username = data);
+    this.isLoggedIn = this.authenticationService.isLoggedIn();
+    this.username = this.authenticationService.getUsername();
   }
 
   goToUserProfile() {
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authenticationService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
   }

@@ -1,0 +1,22 @@
+.likebox {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+.likesection{
+    margin:0px;
+    background-color: #ffffff;
+}
+.like {
+    cursor: pointer;
+    border-radius: 2px solid;
+}
+.like:hover {
+    color: green;
+}
+
+.likecount{
+    font-weight: bold;
+}

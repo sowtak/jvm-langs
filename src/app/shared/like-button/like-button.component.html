@@ -1,0 +1,10 @@
+<div class="col-md-1">
+    <div class="d-flex flex-column likebox">
+    <div class="p-2">
+        <fa-icon (click)="like()" class="like" [icon]="faThumbsUp" [style.color]="post.like ? 'green':''">
+        </fa-icon>
+    </div>
+    <div class="p-2 likecount">{{post.likeCount}}</div>
+    </div>
+</div>
+
