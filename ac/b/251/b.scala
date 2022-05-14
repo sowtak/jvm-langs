@@ -1,6 +1,7 @@
 import scala.io.StdIn
 import java.util.Scanner
 import scala.collection.mutable.Map
+import scala.collection.mutable.ArrayBuffer
 //import scala.collection.mutable.
 
 object Main {
@@ -8,30 +9,52 @@ object Main {
     val sc = new Scanner(System.in)
     val N, W = sc.nextInt()
     val A = List.fill(N)(sc.nextInt())
-
-    var m = Map[Int, Boolean]()
+    var ab = ArrayBuffer.fill(W+1)(0)
     
-    val l1 = A.filter(i => i <= W).map(i => i)
-    l1.foreach { i => m += (i -> true) }
+    var i = 0
+    var j = 0
+    var k = 0
+    while (i<N) {
+      if (A(i)<=W) 
+        ab(A(i)) = 1
+      i+=1
+    }
 
-    val l2 = for {
-      a <- A
-      b <- A
-      sum = a + b
-      if (sum <= W && !m.getOrElse(a, false))
-    } yield(sum)
+    println()
+   
+    i=0
+    j=1
+    while(i<N) {
+      while(j<N) {
+        val sum = A(i) + A(j)
+        if (sum <= W)
+          ab(sum)=1
+        j+=1
+      }
+      i+=1
+      j=i+1
+    }
 
-    l2.foreach { i => m += (i -> true) }
+    println()
 
-    val l3 = for {
-      a <- A
-      b <- A
-      c <- A
-      sum = a + b + c
-      if (sum <= W && !m.getOrElse(a, false))
-    } yield(sum)
-
-
-    println(l1.length + l2.length + l3.length)
+    i=0
+    j=1
+    k=2
+    while(i<N) {
+      while(j<N) {
+        while(k<N) {
+          val sum = A(i)+A(j)+A(k)
+          if (sum <= W)
+            ab(sum)=1
+          k+=1
+        }
+        j+=1
+        k=j+1
+      }
+      i+=1
+      j=i+1
+      k=j+1
+    }
+    println(ab.count(i => i==1))
   }
 }
